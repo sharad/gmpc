@@ -44,7 +44,7 @@ public class Gmpc.MetaData.Widgets.SimilarSongs : Gtk.Alignment
         this.song = song.copy();
         this.set(0.0f, 0.0f, 1.0f, 0.0f);
     }
-    private void add_clicked(Gtk.Widget item)
+    private void add_clicked(Gtk.MenuItem item)
     {
         Gtk.TreeView tree = (Gtk.TreeView)this.pchild;
 
@@ -67,7 +67,7 @@ public class Gmpc.MetaData.Widgets.SimilarSongs : Gtk.Alignment
         MPD.PlayQueue.queue_commit(server);
 
     }
-    private void play_clicked(Gtk.Widget item)
+    private void play_clicked(Gtk.MenuItem item)
     {
         Gtk.TreeView tree = (Gtk.TreeView)this.pchild;
 
@@ -89,7 +89,7 @@ public class Gmpc.MetaData.Widgets.SimilarSongs : Gtk.Alignment
             }
         }
     }
-    private void replace_clicked(Gtk.Widget item)
+    private void replace_clicked(Gtk.MenuItem item)
     {
         bool found = false;
         Gtk.TreeView tree = (Gtk.TreeView)this.pchild;
