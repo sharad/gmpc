@@ -261,18 +261,11 @@ dnl please keep them in alphabetical order
 ALL_LINGUAS="ar bg bn bs ca cs da de el et en_CA en_GB es fi fr gl he hi hu hy id it ja jv lv ml ms nb ne nl oc pl pt pt_BR ro ru sq sv th tr zh_CN zh_TW"
 
 
-AM_GLIB_GNU_GETTEXT
+AM_GNU_GETTEXT([external])
 GETTEXT_PACKAGE=gmpc
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",[GMPC gettext package])
 
-if test x$gt_cv_have_gettext != "xyes"; then
-
-	echo "Translations support is required."
-	exit 1;
-fi
-
-#AM_GNU_GETTEXT([external])
 # setting correct paths
 PACKAGE_LOCALE_DIR="${PACKAGE_PREFIX}/${DATADIRNAME}/locale"
 AC_DEFINE_UNQUOTED(PACKAGE_LOCALE_DIR,"$PACKAGE_LOCALE_DIR",[The package's locale path for gettext])

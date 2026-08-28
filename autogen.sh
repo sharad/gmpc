@@ -10,7 +10,7 @@ test "$REQUIRED_AUTOCONF_VERSION" || REQUIRED_AUTOCONF_VERSION=2.53
 test "$REQUIRED_AUTOMAKE_VERSION" || REQUIRED_AUTOMAKE_VERSION=1.11
 test "$REQUIRED_LIBTOOL_VERSION" || REQUIRED_LIBTOOL_VERSION=1.5
 test "$REQUIRED_GETTEXT_VERSION" || REQUIRED_GETTEXT_VERSION=0.12
-test "$REQUIRED_GLIB_GETTEXT_VERSION" || REQUIRED_GLIB_GETTEXT_VERSION=2.2.0
+# test "$REQUIRED_GLIB_GETTEXT_VERSION" || REQUIRED_GLIB_GETTEXT_VERSION=2.2.0
 test "$REQUIRED_INTLTOOL_VERSION" || REQUIRED_INTLTOOL_VERSION=0.30
 test "$REQUIRED_PKG_CONFIG_VERSION" || REQUIRED_PKG_CONFIG_VERSION=0.14.0
 test "$REQUIRED_GTK_DOC_VERSION" || REQUIRED_GTK_DOC_VERSION=1.0
@@ -253,7 +253,7 @@ forbid_m4macro gnome-cxx-check.m4
 
 want_libtool=false
 want_gettext=false
-want_glib_gettext=false
+# want_glib_gettext=false
 want_intltool=false
 want_pkg_config=false
 want_gtk_doc=false
@@ -273,9 +273,9 @@ for configure_ac in $configure_files; do
     if grep "^AM_GNU_GETTEXT" $configure_ac >/dev/null; then
 	want_gettext=true
     fi
-    if grep "^AM_GLIB_GNU_GETTEXT" $configure_ac >/dev/null; then
-	want_glib_gettext=true
-    fi
+  #   if grep "^AM_GLIB_GNU_GETTEXT" $configure_ac >/dev/null; then
+	# want_glib_gettext=true
+  #   fi
     if grep "^AC_PROG_INTLTOOL" $configure_ac >/dev/null ||
        grep "^IT_PROG_INTLTOOL" $configure_ac >/dev/null; then
 	want_intltool=true
@@ -332,11 +332,11 @@ if $want_gettext; then
     require_m4macro gettext.m4
 fi
 
-if $want_glib_gettext; then
-    version_check glib-gettext GLIB_GETTEXTIZE glib-gettextize $REQUIRED_GLIB_GETTEXT_VERSION \
-        "ftp://ftp.gtk.org/pub/gtk/v2.2/glib-$REQUIRED_GLIB_GETTEXT_VERSION.tar.gz"
-    require_m4macro glib-gettext.m4
-fi
+# if $want_glib_gettext; then
+#     version_check glib-gettext GLIB_GETTEXTIZE glib-gettextize $REQUIRED_GLIB_GETTEXT_VERSION \
+#         "ftp://ftp.gtk.org/pub/gtk/v2.2/glib-$REQUIRED_GLIB_GETTEXT_VERSION.tar.gz"
+#     require_m4macro glib-gettext.m4
+# fi
 
 if $want_intltool; then
     version_check intltool INTLTOOLIZE intltoolize $REQUIRED_INTLTOOL_VERSION \
@@ -398,10 +398,11 @@ for configure_ac in $configure_files; do
 	    $LIBTOOLIZE --force --copy || exit 1
 	fi
 
-	if grep "^AM_GLIB_GNU_GETTEXT" $basename >/dev/null; then
-	    printbold "Running $GLIB_GETTEXTIZE... Ignore non-fatal messages."
-	    echo "no" | $GLIB_GETTEXTIZE --force --copy || exit 1
-	elif grep "^AM_GNU_GETTEXT" $basename >/dev/null; then
+	# if grep "^AM_GLIB_GNU_GETTEXT" $basename >/dev/null; then
+	#     printbold "Running $GLIB_GETTEXTIZE... Ignore non-fatal messages."
+	#     echo "no" | $GLIB_GETTEXTIZE --force --copy || exit 1
+	# el
+  if grep "^AM_GNU_GETTEXT" $basename >/dev/null; then
 	   if grep "^AM_GNU_GETTEXT_VERSION" $basename > /dev/null; then
 	   	printbold "Running autopoint..."
 		autopoint --force || exit 1
