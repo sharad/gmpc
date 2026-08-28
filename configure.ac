@@ -50,11 +50,11 @@ m4_defun([_LT_AC_LANG_F77_CONFIG], [:])
 AC_REPLACE_FUNCS(strndup)
 
 
-#intltool, libtool. Check for CC compiler
-IT_PROG_INTLTOOL([0.21])
+dnl #intltool, libtool. Check for CC compiler
+dnl IT_PROG_INTLTOOL([0.21])
 
-# Check for intltool version, needed for make dist.
-AM_CONDITIONAL([INTLTOOL_HIGHER_04000], [test ${INTLTOOL_APPLIED_VERSION_AS_INT} -ge 4000])
+dnl # Check for intltool version, needed for make dist.
+dnl AM_CONDITIONAL([INTLTOOL_HIGHER_04000], [test ${INTLTOOL_APPLIED_VERSION_AS_INT} -ge 4000])
 
 
 AC_PROG_CC
@@ -231,7 +231,7 @@ AC_SUBST(gthread_LIBS)
 AC_SUBST(gthread_CFLAGS)
 
 #libsoup
-PKG_CHECK_MODULES([libsoup], libsoup-2.4)
+PKG_CHECK_MODULES([libsoup], libsoup-3.0)
 AC_SUBST(libsoup_LIBS)
 AC_SUBST(libsoup_CFLAGS)
 
@@ -261,9 +261,12 @@ dnl please keep them in alphabetical order
 ALL_LINGUAS="ar bg bn bs ca cs da de el et en_CA en_GB es fi fr gl he hi hu hy id it ja jv lv ml ms nb ne nl oc pl pt pt_BR ro ru sq sv th tr zh_CN zh_TW"
 
 
+AM_GNU_GETTEXT_VERSION([0.23])
 AM_GNU_GETTEXT([external])
 GETTEXT_PACKAGE=gmpc
 AC_SUBST(GETTEXT_PACKAGE)
+DOMAIN=gmpc
+AC_SUBST([DOMAIN])
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",[GMPC gettext package])
 
 # setting correct paths
@@ -393,8 +396,6 @@ src/gmpc-version.h
 src/gmpc-win32.rc
 glade/Makefile
 data/Makefile
-po/Makefile.in
-po/Makefile
 data/gmpc.pc
 doc/Makefile
 pixmaps/Makefile
@@ -478,6 +479,7 @@ pixmaps/icons/Humanity/scalable/actions/Makefile
 pixmaps/icons/Humanity/scalable/status/Makefile
 pixmaps/icons/Humanity/scalable/apps/Makefile
 pixmaps/icons/Humanity/scalable/categories/Makefile
+po/Makefile.in
 ])
 AC_OUTPUT
 echo ""

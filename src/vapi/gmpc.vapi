@@ -6,7 +6,7 @@ namespace Gmpc {
     [CCode (cname="browsers_metadata")]
     static Gmpc.Browsers.Metadata browsers_metadata;
 
-    [CCode (cname="tag2_browser_update_orientation")]
+    [CCode (cname="tag2_browser_update_orientation", cheader_filename="browsers/playlist3-tag2-browser.h")]
     static void tag2_browser_update_orientation();
 
     [CCode (cname="paned_size_group", cheader_filename="plugin.h")]

@@ -5,9 +5,9 @@ dist_rcfile_DATA=\
 	gmpc-gtk-win32.rc
 
 desktopdir 	= $(datadir)/applications
-desktop_in_files = gmpc.desktop.in
+# desktop_in_files = gmpc.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gmpc.pc
@@ -18,10 +18,9 @@ dist_appdata_DATA=\
     gmpc.appdata.xml
 
 EXTRA_DIST = 		\
-	gmpc.desktop.in 	\
+	gmpc.desktop 	\
 	gmpc.pc.in
 
 
 DISTCLEANFILES=\
- 	gmpc.pc\
-	gmpc.desktop
+	gmpc.pc

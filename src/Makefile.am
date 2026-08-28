@@ -124,7 +124,8 @@ endif
 
 BUILT_SOURCES=\
               $(gmpc_GOBSTAMPFILES)\
-              revisiont.h
+              revisiont.h \
+			  gmpc-extras.h
 
 gmpc-win32.o: gmpc-win32.rc
 	$(LIBTOOL) --mode=compile --tag=RC $(RC) -i $^ -o $@
