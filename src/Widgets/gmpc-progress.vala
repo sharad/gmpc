@@ -245,11 +245,11 @@ public class Gmpc.Progress : Gtk.VBox
     {
         if(event.direction == Gdk.ScrollDirection.UP)
         {
-            seek_event(this.current+5);
+            seek_event(this.current+2);
         }
         else if (event.direction == Gdk.ScrollDirection.DOWN)
         {
-            seek_event(this.current-5);
+            seek_event(this.current-2);
         }
         return false;
     }
