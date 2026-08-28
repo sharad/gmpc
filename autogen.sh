@@ -318,7 +318,10 @@ case $REQUIRED_AUTOMAKE_VERSION in
 esac
 version_check automake AUTOMAKE "$automake_progs" $REQUIRED_AUTOMAKE_VERSION \
     "http://ftp.gnu.org/pub/gnu/automake/automake-$REQUIRED_AUTOMAKE_VERSION.tar.gz"
-ACLOCAL=`echo $AUTOMAKE | sed s/automake/aclocal/`
+# ACLOCAL=`echo $AUTOMAKE | sed s/automake/aclocal/`
+if test -z "$ACLOCAL"; then
+  ACLOCAL=aclocal
+fi
 
 if $want_libtool; then
     version_check libtool LIBTOOLIZE libtoolize $REQUIRED_LIBTOOL_VERSION \
