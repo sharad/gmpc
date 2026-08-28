@@ -404,7 +404,7 @@ namespace Gmpc {
         [CCode (cname="playlist3_get_category_tree_view")]
         public unowned Gtk.TreeView get_category_tree_view();
 
-        [CCode (cname="main_window_add_status_icon")]
+        [CCode (cname="main_window_add_status_icon",cheader_filename="status_icon.h")]
         public void add_status_icon(Gtk.Widget widget);
 
         [CCode (cname="pl3_update_go_menu",cheader_filename="plugin.h")]
