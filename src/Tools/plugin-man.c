@@ -74,7 +74,7 @@ void plugin_manager_load_internal_plugins(void)
     plugin_add(&playlist_editor_plugin, 0, NULL);
 
     plugin_add(&statistics_plugin, 0, NULL);
-    plugin_add(&proxyplug, 0, NULL);
+    // plugin_add(&proxyplug, 0, NULL);
 
     plugin_add(&extraplaylist_plugin, 0, NULL);
     plugin_add_new(
