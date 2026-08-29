@@ -218,7 +218,7 @@ static void playlist_editor_browser_playlist_editor_selected(GtkTreeModel * mode
     if (pl_path)
     {
         gtk_widget_set_sensitive(playlist_editor_browser, FALSE);
-        gmpc_data_view_set_playlist_name(GTK_TREE_VIEW(playlist_editor_song_tree),pl_path);
+        gmpc_data_view_set_playlist_name(GMPC_DATA_VIEW(playlist_editor_song_tree),pl_path);
         gmpc_mpddata_model_set_mpd_data(GMPC_MPDDATA_MODEL(playlist_editor_list_store), NULL);
         gmpc_mpddata_model_sort_set_playlist(GMPC_MPDDATA_MODEL_SORT(playlist_editor_list_store), pl_path);
         mpd_async_request(__playlist_editor_async_callback, NULL, __playlist_editor_async_function, g_strdup(pl_path));
@@ -594,7 +594,7 @@ static void playlist_editor_rename_playlist(GtkWidget * item, gpointer data)
     g_signal_connect(G_OBJECT(entry), "changed", G_CALLBACK(playlist_editor_new_entry_changed), button);
     gtk_entry_set_text(GTK_ENTRY(entry), name);
     gtk_widget_set_sensitive(button, FALSE);
-    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(dialog)), hbox, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox, TRUE, TRUE, 0);
 
     gtk_misc_set_alignment(GTK_MISC(label), 1, 0.5);
     gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, FALSE, 0);
@@ -746,7 +746,7 @@ static void playlist_editor_browser_init(void)
     playlist_editor_list_store = gmpc_mpddata_model_sort_new();
     gmpc_mpddata_model_disable_image(GMPC_MPDDATA_MODEL(playlist_editor_list_store));
 
-    playlist_editor_song_tree = tree = gmpc_data_view_new("playlist-browser", 
+    playlist_editor_song_tree = tree = (GtkWidget *)gmpc_data_view_new("playlist-browser", 
             GMPC_DATA_VIEW_VIEW_TYPE_PLAYLIST);
     gtk_tree_view_set_model(GTK_TREE_VIEW(tree), GTK_TREE_MODEL(playlist_editor_list_store));
 

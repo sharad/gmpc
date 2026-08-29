@@ -377,7 +377,7 @@ static void pl3_find2_browser_search(void)
         }
     }
     gtk_tree_view_set_model(GTK_TREE_VIEW(pl3_find2_tree), GTK_TREE_MODEL(pl3_find2_store2));
-    gtk_widget_grab_focus(GTK_TREE_VIEW(pl3_find2_tree));
+    gtk_widget_grab_focus(GTK_WIDGET(pl3_find2_tree));
 }
 
 

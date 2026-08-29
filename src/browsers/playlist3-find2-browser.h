@@ -20,6 +20,8 @@
 #ifndef __PLAYLIST_FIND2_BROWSER_H__
 #define __PLAYLIST_FIND2_BROWSER_H__
 
+#include "plugin.h"
+
 extern gmpcPlugin find2_browser_plug;
 
 void pl3_find2_ec_database(gpointer user_data, const char *param);

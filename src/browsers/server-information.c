@@ -394,7 +394,7 @@ static void serverstats_init(void)
         {
             if (mpd_server_tag_supported(connection, j))
             {
-                gtk_combo_box_text_append(GTK_COMBO_BOX(combo),NULL, mpdTagItemKeys[j]);
+                gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(combo),NULL, mpdTagItemKeys[j]);
             }
         }
 
@@ -487,7 +487,7 @@ static void serverinformation_popup_close(GtkWidget * dialog, gint response_id, 
     cfg_set_single_value_as_int(config, "serverstats", "dialog-height", height);
 
     /* Remove info window, and keep it */
-    serverstats_unselected(gtk_dialog_get_content_area(dialog));
+    serverstats_unselected(gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
 
     /* destroy dialog */
     gtk_widget_destroy(dialog);
@@ -528,7 +528,7 @@ void serverinformation_show_popup(void)
                                          GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_OK, NULL);
     /* Add info window */
-    serverstats_selected(gtk_dialog_get_content_area(dialog));
+    serverstats_selected(gtk_dialog_get_content_area(GTK_DIALOG(dialog)));
     /* Restore size */
     gtk_window_resize(GTK_WINDOW(dialog),
                       cfg_get_single_value_as_int_with_default(config, "serverstats", "dialog-width", 400),

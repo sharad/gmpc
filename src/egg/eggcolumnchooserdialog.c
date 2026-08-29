@@ -223,7 +223,7 @@ egg_column_chooser_dialog_init (EggColumnChooserDialog *dialog)
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
     gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
 
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), vbox, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG(dialog))), vbox, TRUE, TRUE, 0);
     gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 8);
 
 

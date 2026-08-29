@@ -356,7 +356,7 @@ static void pl3_current_playlist_browser_init(PlayQueuePlugin * self)
 
     self->priv->pl3_cp_vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
 
-    tree = gmpc_data_view_new(self->priv->uid,
+    tree = (GtkWidget *)gmpc_data_view_new(self->priv->uid,
             GMPC_DATA_VIEW_VIEW_TYPE_PLAY_QUEUE);
     gtk_tree_view_set_model(GTK_TREE_VIEW(tree), GTK_TREE_MODEL(playlist));
 
@@ -592,7 +592,7 @@ static void pl3_current_playlist_add_after_current_song(GtkWidget *item, GtkTree
     }
 }
 
-static int pl3_current_playlist_song_list_option_menu (GmpcPluginBrowserIface *obj, GtkWidget *tree, GtkMenu *menu)
+static int pl3_current_playlist_song_list_option_menu (GmpcPluginSongListIface *obj, GtkWidget *tree, GtkMenu *menu)
 {
     printf("list option menu\n");
     if(mpd_check_connected(connection) && !mpd_player_get_random(connection))

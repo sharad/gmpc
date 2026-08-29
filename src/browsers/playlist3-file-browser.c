@@ -207,8 +207,8 @@ static void pl3_file_browser_init(void)
     gtk_paned_add1(GTK_PANED(pl3_fb_vbox), sw);
 
     /* set up the tree */
-    pl3_fb_tree = gmpc_data_view_new("file-browser",
-            GMPC_DATA_VIEW_VIEW_TYPE_SONG_LIST);
+    pl3_fb_tree = GTK_WIDGET(gmpc_data_view_new("file-browser",
+                                                GMPC_DATA_VIEW_VIEW_TYPE_SONG_LIST));
     gtk_tree_view_set_model(GTK_TREE_VIEW(pl3_fb_tree), GTK_TREE_MODEL(pl3_fb_store2));
     /* setup signals */
     // This is to handle everything the tree-view does not handle by default.
@@ -1192,8 +1192,9 @@ static void pl3_file_browser_save_myself(void)
 /**
  * This is a dirty hack to work around GTK limitation.
  */
-static gboolean __pl3_file_browser_center_on_path(GtkTreePath *path)
+static gboolean __pl3_file_browser_center_on_path(gpointer data)
 {
+    GtkTreePath *path = (GtkTreePath *)data;
     if(pl3_fb_dir_tree != NULL)
         gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(pl3_fb_dir_tree), path, NULL, TRUE, 0.5, 0);
     gtk_tree_path_free(path);
