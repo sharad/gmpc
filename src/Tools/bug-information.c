@@ -253,7 +253,7 @@ void bug_information_window_new(GtkWidget * window)
     /* add text view to scrolled_window */
     gtk_container_add(GTK_CONTAINER(scrolled_window), text_view);
     /* add scrolled_window to dialog */
-    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(dialog)), scrolled_window, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), scrolled_window, TRUE, TRUE, 0);
 
     /* Add dialogs response handler */
     g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(gtk_widget_destroy), NULL);

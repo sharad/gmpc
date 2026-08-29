@@ -227,8 +227,9 @@ static GEADAsyncHandler *gmpc_easy_async_downloader_with_headers_common(const gc
 
 	  if (method == GEAD_POST)
 	  {
-		soup_message_set_request(msg, content_type, SOUP_MEMORY_COPY,
-								 post_data, strlen(post_data));
+      GBytes *bytes = g_bytes_new(post_data, strlen(post_data));
+      soup_message_set_request_body_from_bytes(msg, content_type, bytes);
+      g_bytes_unref(bytes);
 	  }
 
 	  request_headers = soup_message_get_request_headers(msg);

@@ -1156,7 +1156,7 @@ static void tag2_init_browser(tag_browser * browser)
     /* create the actual treeview, use the GmpcTreeview type, so all the handling is done automatic */
 
     browser->tag_songlist = (GtkTreeView *) gmpc_data_view_new(key, FALSE);
-    gtk_tree_view_set_model(GTK_TREE_VIEW(browser->tag_songlist), model);
+    gtk_tree_view_set_model(GTK_TREE_VIEW(browser->tag_songlist), GTK_TREE_MODEL(model));
     g_free(key);
     /* add the treeview to the scrolled window */
     gtk_container_add(GTK_CONTAINER(sw), GTK_WIDGET(browser->tag_songlist));

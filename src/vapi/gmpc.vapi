@@ -376,7 +376,7 @@ namespace Gmpc {
         }
 
         namespace Find {
-            [CCode (cname="pl3_find2_ec_database")]
+            [CCode (cname="pl3_find2_ec_database", cheader_filename="browsers/playlist3-find2-browser.h")]
             public void query_database(void *user_data, string query);
         }
 
@@ -395,7 +395,7 @@ namespace Gmpc {
         
 
             public delegate void Callback (Gtk.MenuItem item);
-            [CCode (cname="playlist_editor_right_mouse")]
+            [CCode (cname="playlist_editor_right_mouse", cheader_filename="browsers/playlist3-playlist-editor.h")]
             public void right_mouse(Gtk.Menu menu, Callback cb);
         }
     }
@@ -479,7 +479,7 @@ namespace Gmpc {
         [CCode (cname="submenu_for_song")]
         public void submenu_for_song(Gtk.Widget menu, MPD.Song song);
 
-        [CCode (cname="connection_set_current_profile")]
+        [CCode (cname="connection_set_current_profile", cheader_filename="Tools/mpdinteraction.h")]
         public void set_current_profile(string id);
 
 		[CCode (cname="connect_to_mpd")]

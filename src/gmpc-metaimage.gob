@@ -200,37 +200,45 @@ class Gmpc:MetaImage from Gtk:Event:Box{
     }
 
     override (Gtk:Widget)
-    GtkSizeRequestMode get_request_mode(self)
+    GtkSizeRequestMode get_request_mode(Gtk:Widget *self)
     {
-        if(self->squared) {
+        GmpcMetaImage *meta = GMPC_METAIMAGE(self);
+
+        if(meta->squared) {
             return GTK_SIZE_REQUEST_CONSTANT_SIZE;
         }
-        return gtk_widget_get_request_mode(self->_priv->image);
+        return gtk_widget_get_request_mode(meta->_priv->image);
     }
+
     override (Gtk:Widget)
-    void get_preferred_height(self,int *min_height, int *nat_height)
+    void get_preferred_height(Gtk:Widget *self, int *min_height, int *nat_height)
     {
-        if(self->squared) {
-            if(min_height != NULL) *min_height = self->size;
-            if(nat_height != NULL) *nat_height = self->size;
-        }else{
-            gtk_widget_get_preferred_height(self->_priv->image, min_height, nat_height);
+        GmpcMetaImage *meta = GMPC_METAIMAGE(self);
+
+        if(meta->squared) {
+            if(min_height != NULL) *min_height = meta->size;
+            if(nat_height != NULL) *nat_height = meta->size;
+        } else {
+            gtk_widget_get_preferred_height(meta->_priv->image,
+                                            min_height, nat_height);
         }
     }
 
     override (Gtk:Widget)
-    void get_preferred_width(self,int *min_width, int *nat_width)
+    void get_preferred_width(Gtk:Widget *self, int *min_width, int *nat_width)
     {
-        if(self->squared) {
-            if(min_width != NULL) *min_width = self->size;
-            if(nat_width != NULL) *nat_width = self->size;
-        }else{
-            gtk_widget_get_preferred_width(self->_priv->image, min_width, nat_width);
+        GmpcMetaImage *meta = GMPC_METAIMAGE(self);
+
+        if(meta->squared) {
+            if(min_width != NULL) *min_width = meta->size;
+            if(nat_width != NULL) *nat_width = meta->size;
+        } else {
+            gtk_widget_get_preferred_width(meta->_priv->image,
+                                           min_width, nat_width);
         }
     }
 
-
-	override (G:Object)
+	  override (G:Object)
 		void
 		dispose(G:Object *obj)
 		{

@@ -29,6 +29,7 @@
 #include "gmpc-extras.h"
 #include "gmpc-metaimage.h"
 #include "misc.h"
+#include "Tools/pixbuf-cache.h"
 #include "tray-icon2.h"
 #include "internal-plugins.h"
 
@@ -1140,7 +1141,9 @@ static void update_popup_settings(void)
             libnotify_plugin.get_enabled());
 
 #else
-    gtk_widget_hide(gtk_builder_get_object(tray_icon2_preferences_xml, "frame_libnotify"));
+    gtk_widget_hide(GTK_WIDGET(
+                      gtk_builder_get_object(tray_icon2_preferences_xml, "frame_libnotify")
+                      ));
 #endif
 }
 

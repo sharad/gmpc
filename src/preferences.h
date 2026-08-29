@@ -12,4 +12,9 @@ void create_preferences_window(void);
  * the list.
  */
 void preferences_window_update(void);
+
+/**
+ * void preferences_show_pref_window(int plugin_id);
+ */
+void preferences_show_pref_window(int plugin_id);
 #endif

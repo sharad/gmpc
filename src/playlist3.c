@@ -25,6 +25,7 @@
 #include "main.h"
 #include "plugin.h"
 #include "misc.h"
+#include "Tools/pixbuf-cache.h"
 #include "playlist3.h"
 #include "preferences.h"
 #include "revision.h"
@@ -1228,7 +1229,7 @@ void create_playlist3(void)
     TEC("Setup extra playlist")
 
     // Add window to GtkApplication.
-    gtk_application_add_window(gmpc_application, playlist3_get_window());
+    gtk_application_add_window(gmpc_application, GTK_WINDOW(playlist3_get_window()));
 }
 
 
